@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 11:38:12 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/01/24 15:06:45 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:35:48 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_pair(char *str)
 
 	c = 0;
 	i = 0;
-	while (str[i])
+	while (str[i] <= 48 || str[i] >= 57)
 	{
 		if (str[i] == '-')
 			c++;
@@ -52,6 +52,8 @@ int	ft_counting(char *str, int *h)
 	j = 0;
 	i = 0;
 	a = -1;
+	while (str[i] < 32 || str[i] > 126)
+			i++;
 	while (str[i])
 	{
 		if (str[i] >= 48 && str[i] <= 57)
@@ -84,7 +86,6 @@ int	ft_atoi(char *str)
 {
 	int	a;
 	int	b;
-	int	i;
 	int	j;
 	int	*h;
 
@@ -93,7 +94,7 @@ int	ft_atoi(char *str)
 	b = 0;
 	j = 0;
 	ft_counting(str, h);
-	b = ft_converter(str, ft_power(a, j), ft_counting(str, h););
+	b = ft_converter(str, ft_power(a, j), ft_counting(str, h));
 	if (ft_pair(str) == 1)
 		b = -b;
 	return (b);
