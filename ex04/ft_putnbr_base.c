@@ -59,7 +59,7 @@ int	ft_adres(int i, int nbr, int *temp)
 	return (u);
 }
 
-void	ft_putnb_base(int nbr, char *base)
+void	ft_putnbr_base(int nbr, char *base)
 {
 	int	i;
 	int	temp[100];
