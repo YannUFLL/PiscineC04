@@ -6,11 +6,11 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 11:38:12 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/01/24 18:35:48 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/01/26 14:40:12 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
 int	ft_power(int a, int j)
 {
@@ -19,52 +19,6 @@ int	ft_power(int a, int j)
 		return (1);
 	else
 		a = ft_power(a, j) * 10;
-	return (a);
-}
-
-int	ft_pair(char *str)
-{
-	int	i;
-	int	c;
-
-	c = 0;
-	i = 0;
-	while (str[i] <= 48 || str[i] >= 57)
-	{
-		if (str[i] == '-')
-			c++;
-		i++;
-	}
-	i = 0;
-	if (c % 2 == 0)
-		c = 1;
-	else
-		c = 0;
-	return (c);
-}
-
-int	ft_counting(char *str, int *h)
-{
-	int	i;
-	int	j;
-	int	a;
-
-	j = 0;
-	i = 0;
-	a = -1;
-	while (str[i] < 32 || str[i] > 126)
-			i++;
-	while (str[i])
-	{
-		if (str[i] >= 48 && str[i] <= 57)
-			a = i;
-		while (str [i + j] >= 48 && str[i + j] <= 57)
-			j++;
-		if (a > -1)
-			break ;
-		i++;
-	}
-	*h = j;
 	return (a);
 }
 
@@ -82,20 +36,49 @@ int	ft_converter(char *str, int a, int i)
 	return (b);
 }
 
+int	ft_pair_or_impair(char *str, int i)
+{
+	int	c;
+	int	d;
+
+	c = 0;
+	d = 0;
+	while (str[i] == 43 || str[i] == 45)
+	{
+		if (str[i] == '-')
+			d++;
+		i++;
+	}
+	if (d % 2 == 0)
+		c = 1;
+	return (c);
+}
+
 int	ft_atoi(char *str)
 {
-	int	a;
-	int	b;
+	int	i;
 	int	j;
-	int	*h;
+	int	a;
+	int	c;
+	int	b;
 
-	h = &j;
-	a = -1;
-	b = 0;
 	j = 0;
-	ft_counting(str, h);
-	b = ft_converter(str, ft_power(a, j), ft_counting(str, h));
-	if (ft_pair(str) == 1)
-		b = -b;
+	i = 0;
+	a = 0;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
+			i++;
+	c = ft_pair_or_impair(str, i);
+	while (str[i] == 43 || str[i] == 45)
+		i++;
+	if (str [i] >= 48 && str[i] <= 57)
+		a = i;
+	while (str [i] >= 48 && str[i] <= 57)
+	{
+		i++;
+		j++;
+	}
+	b = ft_converter(str, ft_power(-1, j), a);
+	if (c == 1 && b < 0)
+		b = -b ;
 	return (b);
 }
