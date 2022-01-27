@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:50:55 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/01/24 17:23:00 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/01/27 14:42:09 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ void	ft_putnbr(int nbr)
 		ft_putchar('-');
 		i = -i;
 	}
-	ft_affi(i, nbr);
+	if (nbr == 0)
+		ft_putchar('0');
+	else
+		ft_affi(i, nbr);
 }

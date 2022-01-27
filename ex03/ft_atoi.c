@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 11:38:12 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/01/26 14:40:12 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:51:06 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_atoi(char *str)
 	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
 			i++;
 	c = ft_pair_or_impair(str, i);
-	while (str[i] == 43 || str[i] == 45)
+	while (str[i] == 43 || str[i] == 45 || str[i] == 48)
 		i++;
 	if (str [i] >= 48 && str[i] <= 57)
 		a = i;
